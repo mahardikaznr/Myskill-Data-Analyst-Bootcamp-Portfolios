@@ -1,5 +1,8 @@
 # Myskill Data Analysis Bootcamp Journey! 🚀
 
+![Background](
+https://github.com/mahardikaznr/Myskill-SQLExercise-Bootcamp-DAPortfolios/blob/main/Vector.jpeg?raw=true)
+
 ## Introduction
 
 Welcome to my GitHub directory where I embarked on an exciting data exploration adventure! 🌟 In this repository, I have utilized PostgreSQL to dive deep into 4 dynamic datasets and tackle 5 intriguing Business Questions Exercises. 📈💼
