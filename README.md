@@ -40,4 +40,4 @@ During this immersive journey, I focused on answering vital business questions, 
 
 ## Join the Exciting Journey!
 
-I'm thrilled to share these discoveries and insights with the GitHub community! 🤝 Let's learn and grow together in the world of data analysis. Feel free to explore the detailed cases in `Exercises_SQL.pdf` and dive into the intriguing data in the provided CSV files. Enjoy the journey of data exploration and analysis! 📊🎨
+I'm thrilled to share these discoveries and insights with the GitHub community! 🤝 Let's learn and grow together in the world of data analysis. Feel free to explore the detailed cases in `Exercises_SQL.pdf` and dive into the intriguing data in the provided TXT files. Enjoy the journey of data exploration and analysis! 📊🎨
