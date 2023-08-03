@@ -1,4 +1,4 @@
-# Myskill Data Analysis Journey! 🚀
+# Myskill Data Analysis Bootcamp Journey! 🚀
 
 ![Data Analysis](https://github.com/mahardikaznr/Data-Analysis-Portofolio/blob/main/Myskill-Bootcamp-Portfolios/Myskill-SQL-Exercise/Vector.jpeg?raw=true)
 
