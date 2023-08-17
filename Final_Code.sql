@@ -21,7 +21,7 @@ HAVING COUNT(*) > 1;
 /* After I examined the data, I have a suspicion that the data provided is not Raw Data,
 but rather data with Null Values that have been changed to a default value of 0. */
 
--- Question Number 1
+-- Question Number 1 (Total Nilai Transaksi Terbesar pada Tahun 2021)
 select
 	date_part('month', order_date) as month,
 	sum(after_discount) as total_after_discount
@@ -34,7 +34,7 @@ group by
 order by
 	total_after_discount DESC;
 
--- Question Number 2
+-- Question Number 2 (Kategori yang menghasilkan nilai transaksi terbesar)
 select
 	sd.category, sum(od.after_discount) as total_transaction
 from
@@ -48,7 +48,7 @@ group by
 order by
 	total_transaction desc;
 
--- Question Number 3
+-- Question Number 3 (Bandingkan kategori)
 select
 	sd.category,
 	sum(od.after_discount) filter (where date_part('year', od.order_date) = 2021) as Total_Transaction_2021,
@@ -68,7 +68,7 @@ order by
 /* Mobile & Tablets sales increased the most
 Others Category and Books sales decreased the most */
 
---  Question Number 4
+--  Question Number 4 (5 Payment Method Paling Populer 2022)
 select
 	pd.payment_method, count(distinct od.order_id) as Total_Order
 from 
@@ -83,32 +83,33 @@ order by
 	Total_Order desc
 Limit 5;
 
--- Question Number 5
+-- Question Number 5 (Urutkan Produk)
+with a as(
 SELECT
     CASE
-        WHEN sd.sku_name ~ 'Apple' THEN 'Apple'
-        WHEN sd.sku_name ~ 'Samsung' THEN 'Samsung'
-        WHEN sd.sku_name ~ 'Sony' THEN 'Sony'
-        WHEN sd.sku_name ~ 'Huawei' THEN 'Huawei'
-        WHEN sd.sku_name ~ 'Lenovo' THEN 'Lenovo'
+        WHEN lower(sd.sku_name) like '%apple%' THEN 'Apple'
+        WHEN lower(sd.sku_name) like '%samsung%' THEN 'Samsung'
+        WHEN lower(sd.sku_name) like '%sony%' THEN 'Sony'
+        WHEN lower(sd.sku_name) like '%huawei%' THEN 'Huawei'
+        WHEN lower(sd.sku_name) like '%lenovo%' THEN 'Lenovo'
     END AS brand,
     SUM(od.after_discount) AS Total_Transaction
 FROM
     sku_detail AS sd
 LEFT JOIN
-    order_detail AS od ON sd.sku_id = od.sku_id AND od.is_valid = 1
+    order_detail AS od ON sd.sku_id = od.sku_id
 where
-	CASE
-        WHEN sd.sku_name ~ 'Apple' THEN 'Apple'
-        WHEN sd.sku_name ~ 'Samsung' THEN 'Samsung'
-        WHEN sd.sku_name ~ 'Sony' THEN 'Sony'
-        WHEN sd.sku_name ~ 'Huawei' THEN 'Huawei'
-        WHEN sd.sku_name ~ 'Lenovo' THEN 'Lenovo'
-    END IS NOT NULL
+	od.is_valid = 1
 GROUP BY
     brand
 ORDER BY
-    Total_Transaction DESC;
+    Total_Transaction DESC)
+select
+	a.*
+from
+	a
+where
+	brand is not null;
 
 -- Checking the Data
 select * from order_detail;
